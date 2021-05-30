@@ -1,13 +1,27 @@
+import React, { useState, useEffect } from 'react'
+import api from './Api'
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App= () => {
+  const [text, setText] = useState({})
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    api.get('/hello_world')
+    .then(response => {
+      setText(response.data.text)
+      setLoaded(true)
+    })
+  }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {loaded && text}
         </p>
         <a
           className="App-link"
