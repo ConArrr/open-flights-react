@@ -21,7 +21,7 @@ const App= () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          {loaded && text}
+          Response: {loaded && text}
         </p>
         <a
           className="App-link"
